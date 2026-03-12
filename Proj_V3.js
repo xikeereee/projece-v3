@@ -8,4 +8,4 @@ console.log("3. Guerrer humà"),
 console.log("4. Arquer mitjà")
 
 
-menu = prompt("Elecció: ");
+menu = prompt("Elecció: "); ////
