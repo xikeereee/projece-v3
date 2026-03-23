@@ -1,23 +1,13 @@
 class Base {
 
-    constructor(nom, TotalVida, Poder) {
-        this.nom = nom;
-        this.TotalVida = TotalVida;
-        this.vida = TotalVida;
-        this.poder = Poder;
-    }
+    Vida
+    Poder
+    Velocitat
 
-    Dany(cuantitat) {
-        this.vida -= cuantitat;
-        if(this.vida < 0) {
-            this.vida = 0;
-        }
-    }
 
-    Curar(cuantitat) {
-        this.vida += cuantitat;
-        if (this.vida > this.TotalVida) {
-            this.vida = this.TotalVida;
-        }
+    constructor(Vida, Poder, Velocitat) {
+        this.Vida = 
+        this.Poder = 
+        this.Velocitat = 
     }
-}
+};

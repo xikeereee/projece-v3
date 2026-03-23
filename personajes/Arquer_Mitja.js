@@ -3,3 +3,5 @@ class Arquer_Mitja {
     Poder = 30
     Velocitat = 20
 }
+
+module.exports.Arquer_Mitja = Arquer_Mitja;
