@@ -6,8 +6,8 @@ class Base {
 
 
     constructor(Vida, Poder, Velocitat) {
-        this.Vida = 
-        this.Poder = 
-        this.Velocitat = 
+        this.Vida = Vida
+        this.Poder = Poder
+        this.Velocitat = Velocitat
     }
 };
