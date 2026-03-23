@@ -1,4 +1,4 @@
-const { mostrarMenuInici, leerOpcion } = require("./Funciones/Menu.js");
+const { mostrarMenuInici, leerOpcion } = require("funciones");
 
 mostrarMenuInici();
 const opcion = leerOpcion(4); // lee la opción una sola vez
