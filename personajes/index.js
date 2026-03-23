@@ -1,5 +1,5 @@
 const {Arquer_Mitja} = require("./Arquer_Mitja.js");
-;
+
 
 
 

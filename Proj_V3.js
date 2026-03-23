@@ -1,3 +1,4 @@
+const prompt = require("prompt-sync")({ sigint: true });
 const { mostrarMenuInici, leerOpcion } = require("funciones");
 
 mostrarMenuInici();
