@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "funciones": "file:Funciones",
+    "personajes": "file:personajes"
+  }
+}
