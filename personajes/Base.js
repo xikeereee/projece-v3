@@ -11,3 +11,5 @@ class Base {
         this.Velocitat = 
     }
 };
+
+module.exports.Base = Base;
