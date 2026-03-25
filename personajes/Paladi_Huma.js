@@ -1,4 +1,4 @@
-const { Base } = require("./Base");
+const { Base } = require("./Base.js");
 
 
 class Paladi_Huma extends Base {
@@ -13,6 +13,15 @@ atacDivi(enemic) {
 
     enemic.modVida - dany;
     this.modVida(cura);
+}
+
+ultimRecurs() {
+    const VidaPropia = this.Poder * 0.5;
+    const VidaContrincant = this.Poder * 1.25;
+
+    this.modVida - VidaPropia;
+    enemic.modVida - VidaContrincant;
+
 }
 }
 
