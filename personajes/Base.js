@@ -23,3 +23,5 @@ class Base {
         }
     }
 };
+
+module.exports.Base = Base;
