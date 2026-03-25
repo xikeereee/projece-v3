@@ -1,6 +1,27 @@
 {
   "dependencies": {
     "funciones": "file:Funciones",
-    "personajes": "file:personajes"
-  }
+    "personajes": "file:personajes",
+    "prompt-sync": "^4.2.0"
+  },
+  "name": "projece-v3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Proj_V3.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xikeereee/projece-v3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/xikeereee/projece-v3/issues"
+  },
+  "homepage": "https://github.com/xikeereee/projece-v3#readme"
 }

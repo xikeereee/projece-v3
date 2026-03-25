@@ -1,9 +1,9 @@
-const { leerOpcion } = require("./Menu");
-
+// MenuDos.js
 const prompt = require("prompt-sync")({ sigint: true });
 
-function mostrarMenuDos() {
-    console.log("Has triat el personatge" + leerOpcion(opcio))
+function mostrarMenuDos(opcio) {
+    console.log("Has triat el personatge: " + opcio);
+    prompt();
 }
 
 module.exports = { mostrarMenuDos };
