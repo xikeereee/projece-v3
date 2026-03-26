@@ -15,4 +15,9 @@ class Mag_Elf extends Base {
         const dany = this.poder * 0.2;
     }
 }
+
+for(let i = 0; i < Cops; i++) {
+    enemic.modVida(-dany)
+}
+
 module.exports.Mag_Elf = Mag_Elf;
