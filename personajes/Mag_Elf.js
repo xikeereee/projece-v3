@@ -11,13 +11,14 @@ class Mag_Elf extends Base {
     }
 
     electrocutar(enemic) {
-        const Cops = Math.floor(Math.random() * 4) + 3;
+        const cops = Math.floor(Math.random() * 4) + 3;
         const dany = this.poder * 0.2;
-    }
-}
+    
 
-for(let i = 0; i < Cops; i++) {
+
+for(let i = 0; i < cops; i++) {
     enemic.modVida(-dany)
 }
-
-module.exports.Mag_Elf = Mag_Elf;
+}
+}
+module.exports = Mag_Elf;

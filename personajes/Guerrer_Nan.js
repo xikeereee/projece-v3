@@ -15,4 +15,4 @@ class Guerrer_Nan extends Base{
     }
 }
 
-module.exports.Guerrer_Nan = Guerrer_Nan;
+module.exports = Guerrer_Nan;

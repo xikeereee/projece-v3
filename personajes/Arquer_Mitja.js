@@ -14,12 +14,14 @@ class Arquer_Mitja extends Base{
     tirMultiple(enemic) {
         const cops = Math.floor(Math.random * 3) + 1;
         const dany = this.poder * 0.5;
-    }
+    
 
-}
 
-for(let i = 0; i < Cops; i++) {
+
+for(let i = 0; i < cops; i++) {
     enemic.modVida(-dany)
 }
+}
+}
 
-module.exports.Arquer_Mitja = Arquer_Mitja;
+module.exports = Arquer_Mitja;
