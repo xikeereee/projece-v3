@@ -15,28 +15,28 @@ function mostrarMenuDos(opcio) {
     console.log("4. Sortir");
 }
 
-function leerOpcionDos(maxOpciones) {
-    let opcion;
+function leerInteraccioDos(InteraccioDos) {
+    let Interaccio;
     do {
-        opcion = parseInt(prompt("> "));
-    } while (isNaN(opcion) || opcion < 1 || opcion > maxOpciones); // corregido
+        Interaccio = parseInt(prompt("> "));
+    } while (isNaN(Interaccio) || Interaccio < 1 || Interaccio > InteraccioDos); // corregido
 
-    switch (opcion) {
+    switch (Interaccio) {
         case 1:
-            opcion = "Paladí Humà"
+            Interaccio = "Crear nou personatge"
             break;
         case 2:
-            opcion = "Mag Elf"
+            Interaccio = "Veure estadístiques"
             break;
         case 3:
-            opcion = "Guerrer Nan"
+            Interaccio = "Lluitar"
             break;
         case 4:
-            opcion = "Arquer Mitjà"
+            Interaccio = "Sortir"
             break;
     }
-    return opcion;
+    return Interaccio;
 }
 
 
-module.exports = { mostrarMenuDos, leerOpcionDos };
+module.exports = { mostrarMenuDos, leerInteraccioDos };
