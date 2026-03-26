@@ -13,7 +13,7 @@ class Base {
     }
 
     modVida(quantitat) {
-        this.Vida = quantitat;
+        this.Vida += quantitat;
 
         if(this.Vida < 0) {
             this.Vida = 0;

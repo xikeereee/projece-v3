@@ -7,13 +7,13 @@ class Arquer_Mitja extends Base{
 
 
     tirPrecis(enemic) {
-        enemic.modVida - this.Poder;
+        enemic.modVida(-this.Poder);
     }
 
 
     tirMultiple(enemic) {
-        const cops = Math.floor(Math.random * 3) + 1;
-        const dany = this.poder * 0.5;
+        const cops = Math.floor(Math.random() * 3) + 1;
+        const dany = this.Poder * 0.5;
     
 
 

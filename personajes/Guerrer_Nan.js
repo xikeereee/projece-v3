@@ -11,7 +11,7 @@ class Guerrer_Nan extends Base{
     }
 
     copDestral (enemic) {
-        enemic.modVida - this.Poder;
+        enemic.modVida(-this.Poder);
     }
 }
 
