@@ -22,22 +22,8 @@ function leerOpcion(maxOpciones) {
     let opcion;
     do {
         opcion = parseInt(prompt("> "));
-    } while (isNaN(opcion) || opcion < 1 || opcion > maxOpciones); // corregido
+    } while (isNaN(opcion) || opcion < 1 || opcion > maxOpciones);
 
-    switch (opcion) {
-        case 1:
-            opcion = "Paladí Humà"
-            break;
-        case 2:
-            opcion = "Mag Elf"
-            break;
-        case 3:
-            opcion = "Guerrer Nan"
-            break;
-        case 4:
-            opcion = "Arquer Mitjà"
-            break;
-    }
     return opcion;
 }
 
