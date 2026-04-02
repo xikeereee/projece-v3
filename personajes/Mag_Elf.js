@@ -1,9 +1,14 @@
 const { Base } = require("./Base.js")
 
-class Mag_Elf extends Base {
-    Vida = 40
-    Poder = 25
-    Velocitat = 15
+class Mag_Elf extends Base { 
+    
+    constructor(){ // Constructor para Mostrar valores a escoger
+        super();
+        this.Nom = "Mag Elf";
+        this.Vida = 40;
+        this.Poder = 25;
+        this.Velocitat = 15;
+    }
 
 
     bolaFoc(enemic) {

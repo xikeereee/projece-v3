@@ -1,9 +1,14 @@
 const { Base } = require("./Base.js");
 
-class Guerrer_Nan extends Base{
-    Vida = 90
-    Poder = 20
-    Velocitat = 5
+class Guerrer_Nan extends Base{ 
+    
+    constructor(){ // Constructor para Mostrar valores a escoger
+        super();
+        this.Nom = "Guerrer Nan";
+        this.Vida = 90;
+        this.Poder = 20;
+        this.Velocitat = 5;
+    }
 
 
     recuperarAle() {

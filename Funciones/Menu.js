@@ -1,6 +1,7 @@
 const prompt = require("prompt-sync")({ sigint: true });
 const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes");
 
+
 function mostrarMenuInici() {
     console.log("+--------- Has de triar personatge ---------+ \n");
     console.log("1. Paladí Humà");
@@ -16,16 +17,14 @@ function leerOpcion(maxOpciones) {
     } while (isNaN(opcion) || opcion < 1 || opcion > maxOpciones);
 
     switch (opcion) {
-        case 1: opcion = new Paladi_Huma(); break;
-        case 2: opcion = new Mag_Elf(); break;
-        case 3: opcion = new Guerrer_Nan(); break;
-        case 4: opcion = new Arquer_Mitja(); break;
+        case 1: return new Paladi_Huma();
+        case 2: return new Mag_Elf();
+        case 3: return new Guerrer_Nan();
+        case 4: return new Arquer_Mitja();
         default:
             console.log("No s'ha detectat cap personatge");
-            break;
+            return null;
     }
-
-    return opcion;
 }
 
 module.exports = { mostrarMenuInici, leerOpcion };

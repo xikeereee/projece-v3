@@ -1,9 +1,14 @@
 const { Base } = require("./Base.js");
 
 class Arquer_Mitja extends Base{
-    Vida = 50
-    Poder = 30
-    Velocitat = 20
+
+    constructor(){ // Constructor para Mostrar valores a escoger
+        super();
+        this.Nom = "Arquer Mitja";
+        this.Vida = 50;
+        this.Poder = 30;
+        this.Velocitat = 20;
+    }
 
 
     tirPrecis(enemic) {

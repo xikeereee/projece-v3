@@ -1,6 +1,5 @@
 const prompt = require("prompt-sync")({ sigint: true });
 const { mostrarMenuInici, leerOpcion, mostrarMenuDos, leerInteraccioDos, CrearPers } = require("funciones");
-const Paladi_Huma = require("./personajes/Paladi_Huma");
 
 personajeActual = null; // Aquí guardaremos el personaje seleccionado o creado
 

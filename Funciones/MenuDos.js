@@ -1,8 +1,9 @@
 // MenuDos.js
 const prompt = require("prompt-sync")({ sigint: true });
+const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes");
 
 function mostrarMenuDos(opcio) {
-    console.log("Has triat el personatge: " + opcio);
+    console.log("Has triat el personatge: ", opcio.Nom);
     prompt();
 
     console.clear()

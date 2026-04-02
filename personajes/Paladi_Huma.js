@@ -2,9 +2,14 @@ const { Base } = require("./Base.js");
 
 
 class Paladi_Huma extends Base {
-    Vida = 75
-    Poder = 25
-    Velocitat = 10
+
+    constructor(){ // Constructor para Mostrar valores a escoger
+        super(); 
+        this.Nom = "Paladí Humà";
+        this.Vida = 75;
+        this.Poder = 25
+        this.Velocitat = 10
+    }
 
 
 atacDivi(enemic) {
