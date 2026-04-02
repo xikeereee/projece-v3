@@ -1,47 +1,64 @@
 const prompt = require("prompt-sync")({ sigint: true });
-const { mostrarMenuInici, leerOpcion, mostrarMenuDos, leerInteraccioDos, CrearPers } = require("funciones");
+const { 
+    mostrarMenuInici, 
+    leerOpcion, 
+    mostrarMenuDos, 
+    leerInteraccioDos, 
+    CrearPers, 
+    luchar, 
+    actualizarEstadisticas, 
+    verEstadisticas, 
+    resetearEstadisticas 
+} = require("funciones");
 
-personajeActual = null; // Aquí guardaremos el personaje seleccionado o creado
+let personajeActual = null; // personaje actual
 
+// --- Selección inicial de personaje ---
 mostrarMenuInici();
-const opcio = leerOpcion(4); // Elegir personaje (1-4)
+personajeActual = leerOpcion(4); // devuelve un objeto de clase personaje
 
-personajeActual = opcio; // Guardar personaje seleccionado
+// --- Bucle principal de interacción ---
+let salir = false;
+do {
+    console.clear();
+    mostrarMenuDos(personajeActual); // Mostrar menú de interacción
 
-mostrarMenuDos(personajeActual);
-const interact = leerInteraccioDos(4); // Elegir acción (1-4) 
+    let interact = leerInteraccioDos(4); // Elegir acción (1-4)
 
-let nouPersonatge;
-switch (interact) {
-    case 1: // Crear nuevo personaje
-        console.clear()
-        console.log("\nCreando un nuevo personaje...");
-        nouPersonatge = CrearPers(personajeActual);
-        console.log("Personaje creado:", nouPersonatge);
-        break;
+    switch (interact) {
 
-    case 2: // Ver estadísticas
-        console.log("\nEstadísticas del personaje seleccionado:");
-        console.log(personajeActual);
-        break;
+        case 1: // Crear nuevo personaje
+            console.clear();
+            console.log("\nCreando un nuevo personaje...");
+            personajeActual = CrearPers(personajeActual); // reemplaza el actual
+            resetearEstadisticas(personajeActual);        // reiniciar estadísticas
+            console.clear();
+            console.log("Personaje creado:", personajeActual.Nom);
+            prompt("\nPresiona cualquier tecla para continuar...");
+            break;
 
-    case 3: // Luchar
-        console.log("\n¡Comienza la lucha!");
-        // Aquí puedes llamar a tu función de combate
-        break;
+        case 2: // Ver estadísticas
+            console.clear();
+            verEstadisticas(personajeActual);
+            prompt("\nPresiona cualquier tecla para continuar...");
+            break;
 
-    case 4: // Salir
-        console.log("\nSaliendo del juego...");
-        break;
+        case 3: // Luchar
+            console.clear();
+            const resultado = luchar(personajeActual); // genera enemigo internamente
+            actualizarEstadisticas(personajeActual, resultado);
+            prompt("\nPresiona cualquier tecla para continuar...");
+            break;
 
-    default:
-        console.log("Opción no válida.");
-        break;
-}
-/*
-console.log("Has triat l'opció:", opcion);
-*/
+        case 4: // Salir
+            console.log("\nSaliendo del juego...");
+            salir = true;
+            break;
 
-// Aquí puedes pasar 'opcion' a otra función
-// por ejemplo ejecutarAccion(opcion)
+        default: // Opción no válida
+            console.log("Opción no válida. Por favor, escoge de nuevo.");
+            prompt("\nPresiona cualquier tecla para continuar...");
+            break;
+    }
 
+} while (!salir);

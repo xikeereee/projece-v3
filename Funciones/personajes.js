@@ -1,15 +1,16 @@
-const { mostrarMenuInici, leerOpcion } = require("./Menu.js"); // ajusta la ruta según tu proyecto
-const prompt = require("prompt-sync")({ sigint: true });
 const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes");
+const { mostrarMenuInici, leerOpcion } = require("./Menu.js"); // ajusta según tu estructura
+const prompt = require("prompt-sync")({ sigint: true });
 
 function CrearPers(personajeActual) {
-    console.log("Personatge actual:", personajeActual.Nom);
+    console.log("Personaje actual:", personajeActual.Nom);
 
-    // Mostramos menú de selección (si quieres que el usuario pueda elegir nombre/tipo)
+    // Mostrar el menú de selección
     mostrarMenuInici();
-    const opcion = leerOpcion(4); // El usuario elige un personaje
 
-    return opcion.Nom; // devuelve el personaje actualizado
+    const nuevoPersonaje = leerOpcion(4); // leerOpcion ya devuelve un objeto de personaje
+
+    return nuevoPersonaje; // Devuelve el **objeto completo**, no solo el nombre
 }
 
 module.exports = { CrearPers };

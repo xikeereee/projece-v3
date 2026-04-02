@@ -1,14 +1,13 @@
 // MenuDos.js
 const prompt = require("prompt-sync")({ sigint: true });
 const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes");
+const { mostrarMenuInici, leerOpcion } = require("./Menu.js"); // ajusta según tu estructura
 
 function mostrarMenuDos(opcio) {
-    console.log("Has triat el personatge: ", opcio.Nom);
-    prompt();
 
     console.clear()
-
-    console.log("+--------- Que farém ---------+ \n");
+    
+    console.log("+--------- QUE VOLS FER ---------+ \n");
 
     console.log("1. Crear nou personatge");
     console.log("2. Veure estadístiques");
