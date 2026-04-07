@@ -19,14 +19,14 @@ function actualizarEstadisticas(personaje, resultado) {
 
     // Leer CSV actual
     const data = fs.readFileSync(archivo, "utf8").trim().split("\n");
-    var header = data[0];
-    var stats = data[1];
-    var nombre = personaje.Nom;
-    var victorias = "0";
-    var derrotas = "0";
+    let header = data[0];
+    let stats = data[1];
+    let nombre = personaje.Nom;
+    let victorias = "0";
+    let derrotas = "0";
 
     if (stats) {
-        var parts = stats.split(";");
+        let parts = stats.split(";");
         nombre = parts[0];
         victorias = parts[1];
         derrotas = parts[2];
@@ -47,10 +47,10 @@ function actualizarEstadisticas(personaje, resultado) {
 
 function verEstadisticas(personaje) {
     // Convertimos espacios en _ para carpeta y archivo
-    var nombreArchivo = personaje.Nom.replace(/ /g, "_");
+    let nombreArchivo = personaje.Nom.replace(/ /g, "_");
 
-    var carpeta = path.join(__dirname, "..", "Estadisticas", nombreArchivo);
-    var archivo = path.join(carpeta, nombreArchivo + ".csv");
+    let carpeta = path.join(__dirname, "..", "Estadisticas", nombreArchivo);
+    let archivo = path.join(carpeta, nombreArchivo + ".csv");
 
     // Verificar si existe el archivo
     if (!fs.existsSync(archivo)) {
@@ -59,17 +59,17 @@ function verEstadisticas(personaje) {
     }
 
     // Leer CSV
-    var data = fs.readFileSync(archivo, "utf8").trim().split("\n");
-    var stats = data[1]; // segunda línea, después del header
+    let data = fs.readFileSync(archivo, "utf8").trim().split("\n");
+    let stats = data[1]; // segunda línea, después del header
     if (!stats) {
         console.log("No hay estadísticas registradas para " + personaje.Nom);
         return;
     }
 
-    var parts = stats.split(";");
-    var nombre = parts[0];
-    var victorias = parts[1];
-    var derrotas = parts[2];
+    let parts = stats.split(";");
+    let nombre = parts[0];
+    let victorias = parts[1];
+    let derrotas = parts[2];
 
     console.log("Estadísticas de " + nombre + ":");
     console.log("Victorias: " + victorias);

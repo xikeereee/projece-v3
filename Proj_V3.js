@@ -1,14 +1,14 @@
 const prompt = require("prompt-sync")({ sigint: true });
-const { 
-    mostrarMenuInici, 
-    leerOpcion, 
-    mostrarMenuDos, 
-    leerInteraccioDos, 
-    CrearPers, 
-    luchar, 
-    actualizarEstadisticas, 
-    verEstadisticas, 
-    resetearEstadisticas 
+const {
+    mostrarMenuInici,
+    leerOpcion,
+    mostrarMenuDos,
+    leerInteraccioDos,
+    CrearPers,
+    luchar,
+    actualizarEstadisticas,
+    verEstadisticas,
+    resetearEstadisticas
 } = require("funciones");
 
 let personajeActual = null; // personaje actual
