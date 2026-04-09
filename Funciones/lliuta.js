@@ -1,6 +1,7 @@
 const prompt = require("prompt-sync")({ sigint: true });
 const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes");
 
+
 // Genera un enemigo distinto al personaje actual
 function generarEnemic(personajeActual) {
     const personajes = [Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja];
@@ -11,6 +12,9 @@ function generarEnemic(personajeActual) {
     } while (enemigo.Nom === personajeActual.Nom); // ahora en mayúscula
     return enemigo;
 }
+
+
+
 
 // Lucha y pregunta al usuario quién ganó
 function luchar(personajeActual) {

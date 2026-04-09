@@ -1,5 +1,5 @@
 const prompt = require("prompt-sync")({ sigint: true });
-const { TerminalUtils } = require("./TerminalUtils.js");
+const { TerminalUtils } = require("terminalutils");
 const {
     mostrarMenuInici,
     leerOpcion,

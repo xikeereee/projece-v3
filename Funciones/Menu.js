@@ -12,18 +12,28 @@ function mostrarMenuInici() {
 
 function leerOpcion(maxOpciones) {
     let opcion;
-    do {
+
+    while (true) {
+        console.clear();
+        mostrarMenuInici();
+
         opcion = parseInt(prompt("> "));
-    } while (isNaN(opcion) || opcion < 1 || opcion > maxOpciones);
+
+        if (!isNaN(opcion) && opcion >= 1 && opcion <= maxOpciones) {
+            break;
+        }
+
+
+        console.log("")
+        console.log("ERROR: Escull una opció vàlida");
+        prompt("Prem ENTER per continuar...");
+    }
 
     switch (opcion) {
         case 1: return new Paladi_Huma();
         case 2: return new Mag_Elf();
         case 3: return new Guerrer_Nan();
         case 4: return new Arquer_Mitja();
-        default:
-            console.log("No s'ha detectat cap personatge");
-            return null;
     }
 }
 
