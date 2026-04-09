@@ -11,20 +11,20 @@ class Arquer_Mitja extends Base {
     }
 
 
-    tirPrecis(enemic) {
+    atack1(enemic) {
         enemic.modVida(-this.Poder);
     }
 
 
-    tirMultiple(enemic) {
+    atack2(enemic) {
         const cops = Math.floor(Math.random() * 3) + 1;
         const dany = this.Poder * 0.5;
 
-
-
-
         for (let i = 0; i < cops; i++) {
-            enemic.modVida(-dany)
+            do{
+                enemic.modVida(-dany)
+            }
+            while(i === cops)
         }
     }
 }

@@ -11,11 +11,11 @@ class Guerrer_Nan extends Base{
     }
 
 
-    recuperarAle() {
+    atack1() {
         this.modVida(this.Poder * 1.5);
     }
 
-    copDestral (enemic) {
+    atack2(enemic) {
         enemic.modVida(-this.Poder);
     }
 }

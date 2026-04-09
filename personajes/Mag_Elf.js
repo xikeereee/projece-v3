@@ -11,11 +11,11 @@ class Mag_Elf extends Base {
     }
 
 
-    bolaFoc(enemic) {
+    atack1(enemic) {
         enemic.modVida(-this.Poder);
     }
 
-    electrocutar(enemic) {
+    atack2(enemic) {
         const cops = Math.floor(Math.random() * 4) + 3;
         const dany = this.Poder * 0.2;
     
