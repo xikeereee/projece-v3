@@ -1,8 +1,8 @@
 const { Base } = require("./Base.js")
 
-class Mag_Elf extends Base { 
-    
-    constructor(){ // Constructor para Mostrar valores a escoger
+class Mag_Elf extends Base {
+
+    constructor() { // Constructor para Mostrar valores a escoger
         super();
         this.Nom = "Mag Elf";
         this.Vida = 40;
@@ -16,14 +16,12 @@ class Mag_Elf extends Base {
     }
 
     atack2(enemic) {
-        const cops = Math.floor(Math.random() * 4) + 3;
+        const cops = Math.floor(Math.random() * 4) + 3; // entre 3 y 6
         const dany = this.Poder * 0.2;
-    
 
-
-for(let i = 0; i < cops; i++) {
-    enemic.modVida(-dany)
-}
-}
+        for (let i = 0; i < cops; i++) {
+            enemic.modVida(-dany);
+        }
+    }
 }
 module.exports = Mag_Elf;

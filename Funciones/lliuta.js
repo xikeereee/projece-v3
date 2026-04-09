@@ -35,13 +35,15 @@ function luchar(personajeActual) {
         console.log("enemic:" + def.Nom)
         */
         const atac = Math.floor(Math.random() * 2) + 1;
-        if (atac === 1){
+        if (atac === 1) {
             torn.atack1(def)
-            console.log(def.Vida)
-            awebo = ("🍑")
-        } else{
+            console.log("Vida: " + torn.Nom + "=" + torn.Vida)
+            console.log("Vida: " + def.Nom + "=" + def.Vida)
+            awebo = ("🍑🔥")
+        } else {
             torn.atack2(def)
-            console.log(def.Vida)
+            console.log("Vida: " + def.Nom + "=" + def.Vida)
+            console.log("Vida: " + torn.Nom + "=" + torn.Vida)
             awebo = ("tupu")
 
         }
@@ -56,12 +58,21 @@ function luchar(personajeActual) {
     } else if (personajeActual.Velocitat < enemic.Velocitat) {
         torn = enemic
         def = personajeActual
+        console.log("TUPU ME ESTA ATACANDO AL BICHO!!!!!!!!!!!!!!!!!")
+        const atac = Math.floor(Math.random() * 2) + 1;
+        if (atac === 1) {
+            torn.atack1(def)
+            console.log("Vida: " + torn.Nom + "=" + torn.Vida)
+            console.log("Vida: " + def.Nom + "=" + def.Vida)
+            awebo = ("🍑🐗")
+        } else {
+            torn.atack2(def)
+            console.log("Vida: " + torn.Nom + "=" + torn.Vida)
+            console.log("Vida: " + def.Nom + "=" + def.Vida)
+            awebo = ("tupuⓂ️Ⓜ️")
 
-        console.log("torn:" + def.Nom)
-        console.log("enemic:" + torn.Nom)
-
-        torn.atack1(def)
-        console.log(def.Vida)
+        }
+        console.log(awebo)
         prompt()
     }
 

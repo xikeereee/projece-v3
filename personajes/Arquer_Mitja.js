@@ -21,10 +21,10 @@ class Arquer_Mitja extends Base {
         const dany = this.Poder * 0.5;
 
         for (let i = 0; i < cops; i++) {
-            do{
+            do {
                 enemic.modVida(-dany)
             }
-            while(i === cops)
+            while (i === cops)
         }
     }
 }

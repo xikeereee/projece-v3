@@ -7,8 +7,8 @@ class Paladi_Huma extends Base {
         super();
         this.Nom = "Paladí Humà";
         this.Vida = 75;
-        this.Poder = 25
-        this.Velocitat = 10
+        this.Poder = 25;
+        this.Velocitat = 10;
     }
 
 
