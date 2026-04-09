@@ -2,7 +2,8 @@
   "dependencies": {
     "funciones": "file:Funciones",
     "personajes": "file:personajes",
-    "prompt-sync": "^4.2.0"
+    "prompt-sync": "^4.2.0",
+    "terminalutils": "file:terminalUtils"
   },
   "name": "projece-v3",
   "version": "1.0.0",
