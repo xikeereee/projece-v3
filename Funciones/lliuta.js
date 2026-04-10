@@ -14,48 +14,56 @@ function generarEnemic(personajeActual) {
 }
 
 function luchar(personajeActual) {
-
     const enemic = generarEnemic(personajeActual);
 
     console.log("Tu personaje: " + personajeActual.Nom);
     console.log("Enemigo: " + enemic.Nom);
 
+    let atacante, defensor;
 
-    let torn;
-    let def;
-    let accion;
-    let esquivar;
-    let awebo;
-
+    // Decidir quién empieza
     if (personajeActual.Velocitat > enemic.Velocitat) {
-        torn = personajeActual
-        def = enemic
-        /*
-        console.log("torn:" + torn.Nom)
-        console.log("enemic:" + def.Nom)
-        */
-        const atac = Math.floor(Math.random() * 2) + 1;
-        if (atac === 1) {
-            torn.atack1(def)
-            console.log("Vida: " + torn.Nom + "=" + torn.Vida)
-            console.log("Vida: " + def.Nom + "=" + def.Vida)
-            awebo = ("🍑🔥")
-        } else {
-            torn.atack2(def)
-            console.log("Vida: " + def.Nom + "=" + def.Vida)
-            console.log("Vida: " + torn.Nom + "=" + torn.Vida)
-            awebo = ("tupu")
+        atacante = personajeActual;
+        defensor = enemic;
+    } else {
+        atacante = enemic;
+        defensor = personajeActual;
+    }
 
-        }
-        console.log(awebo)
-        prompt()
-        /*
-        torn.atack1(def)
-        console.log(def.Vida)
-        prompt()
-        */
+    console.log("Empieza atacando: " + atacante.Nom);
 
-    } else if (personajeActual.Velocitat < enemic.Velocitat) {
+    // Tirada de esquiva
+    let esquivacion = Math.floor(Math.random() * 100) + 1;
+    console.log("Tirada esquiva: " + esquivacion);
+    prompt();
+
+    // Determinar si esquiva
+    let esquiva = esquivacion <= defensor.Velocitat;
+
+    // Elegir ataque
+    let atac = Math.floor(Math.random() * 2) + 1;
+
+    if (atac === 1) {
+        atacante.atack1(defensor, !esquiva);
+        console.log(atacante.Nom + " usa ataque 1");
+    } else {
+        atacante.atack2(defensor, !esquiva);
+        console.log(atacante.Nom + " usa ataque 2");
+    }
+
+    // Mensaje de esquiva
+    if (esquiva) {
+        console.log(defensor.Nom + " ha esquivado el daño!");
+    }
+
+    // Mostrar vidas finales
+    console.log("Vida: " + atacante.Nom + " = " + atacante.Vida);
+    console.log("Vida: " + defensor.Nom + " = " + defensor.Vida);
+
+    prompt();
+}
+    /*
+    else if (personajeActual.Velocitat < enemic.Velocitat){
         torn = enemic
         def = personajeActual
         console.log("TUPU ME ESTA ATACANDO AL BICHO!!!!!!!!!!!!!!!!!")
@@ -75,11 +83,7 @@ function luchar(personajeActual) {
         console.log(awebo)
         prompt()
     }
-
-    prompt()
-
-}
-
+*/
 /*
 // Lucha y pregunta al usuario quién ganó
 function luchar(personajeActual) {

@@ -29,23 +29,23 @@ do {
     switch (interact) {
 
         case 1: // Crear nuevo personaje
-            console.clear();
+            //console.clear();
             console.log("\nCreando un nuevo personaje...");
             personajeActual = CrearPers(personajeActual); // reemplaza el actual
             resetearEstadisticas(personajeActual);        // reiniciar estadísticas
-            console.clear();
+            //console.clear();
             console.log("Personaje creado:", personajeActual.Nom);
             prompt("\nPresiona cualquier tecla para continuar...");
             break;
 
         case 2: // Ver estadísticas
-            console.clear();
+            //console.clear();
             verEstadisticas(personajeActual);
             prompt("\nPresiona cualquier tecla para continuar...");
             break;
 
         case 3: // Luchar
-            console.clear();
+            //console.clear();
             const resultado = luchar(personajeActual); // genera enemigo internamente
             actualizarEstadisticas(personajeActual, resultado);
             prompt("\nPresiona cualquier tecla para continuar...");

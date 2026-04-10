@@ -12,11 +12,14 @@ class Paladi_Huma extends Base {
     }
 
 
-    atack1(enemic) {
+    atack1(enemic, hacerDanyo = true) {
         const dany = this.Poder * 0.7;
         const cura = this.Poder * 0.25;
 
-        enemic.modVida(-dany);
+        if (hacerDanyo) {
+            enemic.modVida(-dany);
+        }
+
         this.modVida(cura);
     }
 
