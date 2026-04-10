@@ -1,5 +1,8 @@
 const prompt = require("prompt-sync")({ sigint: true });
 const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes");
+const { TerminalUtils } = require("terminalutils");
+
+
 
 
 function mostrarMenuInici() {
