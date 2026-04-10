@@ -17,7 +17,7 @@ function leerOpcion(maxOpciones) {
     let opcion;
 
     while (true) {
-        //console.clear();//
+        console.clear();
         mostrarMenuInici();
 
         opcion = parseInt(prompt("> "));
