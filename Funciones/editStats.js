@@ -1,6 +1,24 @@
+/**
+ * Projecte V3 Combats Automàtics
+ * Grup 4
+ * Autors: Iker Moreno, Marc Beltrán, Alexander Constante
+ * Estadísticas y manipulación de datos
+ */
+
+
 const fs = require("fs");
 const path = require("path");
 
+
+
+
+
+/**
+ * Entran las variables personaje y resultado, crea/modifica archivos, de tipo CSV, de cada personaje,
+ * se navega/crea los directorio.
+ * @param {*} personaje 
+ * @param {*} resultado 
+ */
 function actualizarEstadisticas(personaje, resultado) {
     // Convertimos espacios en _ para carpeta y archivo
     const nombreArchivo = personaje.Nom.replace(/ /g, "_");
@@ -45,6 +63,21 @@ function actualizarEstadisticas(personaje, resultado) {
     console.log("Estadísticas actualizadas: " + personaje.Nom + " - Victorias: " + victorias + ", Derrotas: " + derrotas);
 }
 
+
+
+
+
+
+
+
+
+
+/**
+ * Con el personaje escogido se hace lectura de las estadisticas de cada personaje,
+ * se repasa la existencia del archivo así como se procede a su lectura
+ * @param {*} personaje 
+ * @returns 
+ */
 function verEstadisticas(personaje) {
     // Convertimos espacios en _ para carpeta y archivo
     let nombreArchivo = personaje.Nom.replace(/ /g, "_");
@@ -75,6 +108,18 @@ function verEstadisticas(personaje) {
     console.log("Victorias: " + victorias);
     console.log("Derrotas: " + derrotas);
 }
+
+
+
+
+
+
+
+/**
+ * Esta función es capaz tanto de crear un archivo (nuevamente) si no existiese y 
+ * reescribe en blanco los valores del personaje pasado por esta función
+ * @param {*} personaje 
+ */
 function resetearEstadisticas(personaje) {
     // Reemplaza espacios por _ para carpeta y archivo
     const nombreArchivo = personaje.Nom.replace(/ /g, "_");
@@ -93,6 +138,7 @@ function resetearEstadisticas(personaje) {
 
     console.log("Estadisticas reseteadas para: " + personaje.Nom);
 }
+
 
 
 module.exports = { actualizarEstadisticas, verEstadisticas, resetearEstadisticas };

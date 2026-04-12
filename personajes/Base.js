@@ -1,3 +1,12 @@
+/**
+ * Projecte V3 Combats Automàtics
+ * Grup 4
+ * Autors: Iker Moreno, Marc Beltrán, Alexander Constante
+ * Construcción/exportación de objeto personaje: Base
+ */
+
+
+
 class Base {
     Nom
     Vida
@@ -21,7 +30,7 @@ class Base {
         }
 
         if (this.Vida > this.VidaMax) {
-            this.Vida = this.VidaMax // Evita que la vida supere la vida max
+            this.Vida = this.VidaMax // Evita que la vida supere la vida máxima
         }
     }
 };

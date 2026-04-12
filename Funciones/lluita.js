@@ -1,3 +1,12 @@
+/**
+ * Projecte V3 Combats Automàtics
+ * Grup 4
+ * Autors: Iker Moreno, Marc Beltrán, Alexander Constante
+ * Script de combate
+ */
+
+
+
 const prompt = require("prompt-sync")({ sigint: true });
 const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes/index.js");
 const { actualizarEstadisticas } = require("./editStats.js");
@@ -5,17 +14,32 @@ const { actualizarEstadisticas } = require("./editStats.js");
 
 
 
-// Genera un enemigo distinto al personaje actual
+
+
+/**
+ * Cambia un enemigo distinto al actual (o si no existe ninguno te lo genera)
+ * @param {*} personajeActual 
+ * @returns 
+ */
 function generarEnemic(personajeActual) {
     const personajes = [Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja];
     let enemigo;
     do {
         const index = Math.floor(Math.random() * personajes.length);
         enemigo = new personajes[index]();
-    } while (enemigo.Nom === personajeActual.Nom); 
+    } while (enemigo.Nom === personajeActual.Nom);
     return enemigo;
 }
 
+
+
+
+
+/**
+ * Mediante tu personaje actual se lleva a cabo el combate, entra en un bucle hasta que la 
+ * vida, tanto del personaje del usuario como del rival bajen de 0
+ * @param {*} personajeActual 
+ */
 function luchar(personajeActual) {
     const enemic = generarEnemic(personajeActual);
 
@@ -24,7 +48,7 @@ function luchar(personajeActual) {
 
     let atacante, defensor;
 
-    // Quien empieza
+    // Definición del primer jugador
     if (personajeActual.Velocitat > enemic.Velocitat) {
         atacante = personajeActual;
         defensor = enemic;
@@ -36,14 +60,26 @@ function luchar(personajeActual) {
     console.log("Empieza atacando: " + atacante.Nom);
     prompt();
 
+
+
+
+
+
+
     // Bucle de combate
     while (personajeActual.Vida > 0 && enemic.Vida > 0) {
-
         console.log("\n--- TURNO DE " + atacante.Nom + " ---");
+
+
+
 
         // Dado para poder esquivar
         let tirada = Math.floor(Math.random() * 100) + 1;
         let esquiva = tirada <= defensor.Velocitat;
+
+
+
+
 
         // Elegir ataque
         let atac = Math.floor(Math.random() * 2) + 1;
@@ -66,11 +102,15 @@ function luchar(personajeActual) {
 
         }
 
+
+
         // Mostrar vidas
         console.log("Vida " + atacante.Nom + ": " + atacante.Vida);
         console.log("Vida " + defensor.Nom + ": " + defensor.Vida);
 
         prompt();
+
+
 
         // Cambiar turnos
         let temp = atacante;
@@ -78,6 +118,10 @@ function luchar(personajeActual) {
         defensor = temp;
     }
 
+
+
+
+    // Muestra de resultados
     console.log("\n===== FIN DEL COMBATE =====");
     if (personajeActual.Vida > 0) {
         console.log("Has ganado!");
@@ -87,8 +131,12 @@ function luchar(personajeActual) {
         actualizarEstadisticas(personajeActual, "derrota");
     }
 
+
+
+
+
     //Resetear vidas para volver a jugar si se quiere
-    personajeActual.Vida = personajeActual.VidaMax; 
+    personajeActual.Vida = personajeActual.VidaMax;
     enemic.Vida = enemic.VidaMax;
     prompt();
 }

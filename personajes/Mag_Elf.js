@@ -1,3 +1,12 @@
+/**
+ * Projecte V3 Combats Automàtics
+ * Grup 4
+ * Autors: Iker Moreno, Marc Beltrán, Alexander Constante
+ * Construcción/exportación de objeto personaje: Mag_elf
+ */
+
+
+
 const { Base } = require("./Base.js")
 
 class Mag_Elf extends Base {

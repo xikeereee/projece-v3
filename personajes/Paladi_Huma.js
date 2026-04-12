@@ -1,3 +1,12 @@
+/**
+ * Projecte V3 Combats Automàtics
+ * Grup 4
+ * Autors: Iker Moreno, Marc Beltrán, Alexander Constante
+ * Construcción/exportación de objeto personaje: Paladi_Huma
+ */
+
+
+
 const { Base } = require("./Base.js");
 
 
@@ -14,6 +23,9 @@ class Paladi_Huma extends Base {
     }
 
 
+
+
+    
     atack1(enemic, hacerDanyo = true) { // Atac diví
         const dany = this.Poder * 0.7;
         const cura = this.Poder * 0.25;
@@ -24,6 +36,7 @@ class Paladi_Huma extends Base {
 
         this.modVida(cura);
     }
+
 
     atack2(enemic) { // Ultim recurs
         const VidaPropia = this.Poder * 0.5;

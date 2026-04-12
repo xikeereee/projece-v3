@@ -1,3 +1,12 @@
+/**
+ * Projecte V3 Combats Automàtics
+ * Grup 4
+ * Autors: Iker Moreno, Marc Beltrán, Alexander Constante
+ * Exportación de módulos i constantes
+ */
+
+
+
 const prompt = require("prompt-sync")({ sigint: true });
 
 const { leerOpcion, mostrarMenuInici } = require("./Menu.js");

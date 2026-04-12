@@ -1,3 +1,11 @@
+/**
+ * Projecte V3 Combats Automàtics
+ * Grup 4
+ * Autors: Iker Moreno, Marc Beltrán, Alexander Constante
+ * Script MAIN
+ */
+
+
 const prompt = require("prompt-sync")({ sigint: true });
 const { TerminalUtils } = require("terminalutils");
 const {
@@ -12,11 +20,27 @@ const {
     resetearEstadisticas
 } = require("funciones");
 
+
+
+
+
+
+
+
+//------------------------------>> MAIN <<------------------------------\\
+
 let personajeActual = null; // personaje actual
+
 
 // Selección inicial de personaje
 mostrarMenuInici();
 personajeActual = leerOpcion(4); // devuelve un objeto de clase personaje
+
+
+
+
+
+
 
 // Bucle principal de interacción
 let salir = false;
@@ -26,34 +50,57 @@ do {
 
     let interact = leerInteraccioDos(4); // Elegir acción (1-4)
 
+
+
     switch (interact) {
 
         case 1: // Crear nuevo personaje
             console.clear();
             console.log("\nCreando un nuevo personaje...");
+
             personajeActual = CrearPers(personajeActual); // reemplaza el actual
             resetearEstadisticas(personajeActual);        // reiniciar estadísticas
             console.clear();
+
+
+
+
             console.log("Personaje creado:", personajeActual.Nom);
             prompt("\nPresiona cualquier tecla para continuar...");
             break;
 
+
+
+
+
         case 2: // Ver estadísticas
             console.clear();
             verEstadisticas(personajeActual);
+
             prompt("\nPresiona cualquier tecla para continuar...");
             break;
+
+
+
 
         case 3: // Luchar
             console.clear();
             luchar(personajeActual); // genera enemigo internamente
+
             prompt("\nPresiona cualquier tecla para continuar...");
             break;
+
+
+
 
         case 4: // Salir
             console.log("\nSaliendo del juego...");
             salir = true;
             break;
+
+
+
+
 
         default: // Opción no válida
             console.log("Opción no válida. Por favor, escoge de nuevo.");

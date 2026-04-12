@@ -1,10 +1,21 @@
+/**
+ * Projecte V3 Combats Automàtics
+ * Grup 4
+ * Autors: Iker Moreno, Marc Beltrán, Alexander Constante
+ * Menú principal (selección de personaje)
+ */
+
+
+
 const prompt = require("prompt-sync")({ sigint: true });
 const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes");
 const { TerminalUtils } = require("terminalutils");
 
 
 
-
+/**
+ * Muestra los personajes a elegir
+ */
 function mostrarMenuInici() {
     console.log("+--------- Has de triar personatge ---------+ \n");
     console.log("1. Paladí Humà");
@@ -13,6 +24,14 @@ function mostrarMenuInici() {
     console.log("4. Arquer Mitjà \n");
 }
 
+
+
+/**
+ * Se asegura de que la opción que escoja el usuario sea válida, pero también
+ * avisa de si hay un error
+ * @param {*} maxOpciones 
+ * @returns 
+ */
 function leerOpcion(maxOpciones) {
     let opcion;
 

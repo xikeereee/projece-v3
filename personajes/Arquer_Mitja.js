@@ -1,3 +1,13 @@
+/**
+ * Projecte V3 Combats Automàtics
+ * Grup 4
+ * Autors: Iker Moreno, Marc Beltrán, Alexander Constante
+ * Construcción/exportación de objeto personaje: Aquer_Mitja
+ */
+
+
+
+
 const { Base } = require("./Base.js");
 
 class Arquer_Mitja extends Base {

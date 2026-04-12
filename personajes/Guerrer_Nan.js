@@ -1,8 +1,18 @@
+/**
+ * Projecte V3 Combats Automàtics
+ * Grup 4
+ * Autors: Iker Moreno, Marc Beltrán, Alexander Constante
+ * Construcción/exportación de objeto personaje: Guerrer_nan
+ */
+
+
+
+
 const { Base } = require("./Base.js");
 
-class Guerrer_Nan extends Base{ 
-    
-    constructor(){ // Constructor para Mostrar valores a escoger
+class Guerrer_Nan extends Base {
+
+    constructor() { // Constructor para Mostrar valores a escoger
         super();
         this.Nom = "Guerrer Nan";
         this.Vida = 90;
