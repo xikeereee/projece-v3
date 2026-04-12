@@ -9,10 +9,12 @@ class Paladi_Huma extends Base {
         this.Vida = 75;
         this.Poder = 25;
         this.Velocitat = 10;
+
+        this.VidaMax = this.Vida;
     }
 
 
-    atack1(enemic, hacerDanyo = true) {
+    atack1(enemic, hacerDanyo = true) { // Atac diví
         const dany = this.Poder * 0.7;
         const cura = this.Poder * 0.25;
 
@@ -23,7 +25,7 @@ class Paladi_Huma extends Base {
         this.modVida(cura);
     }
 
-    atack2(enemic) {
+    atack2(enemic) { // Ultim recurs
         const VidaPropia = this.Poder * 0.5;
         const VidaContrincant = this.Poder * 1.25;
 

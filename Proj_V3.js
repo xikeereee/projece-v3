@@ -14,11 +14,11 @@ const {
 
 let personajeActual = null; // personaje actual
 
-// --- Selección inicial de personaje ---
+// Selección inicial de personaje
 mostrarMenuInici();
 personajeActual = leerOpcion(4); // devuelve un objeto de clase personaje
 
-// --- Bucle principal de interacción ---
+// Bucle principal de interacción
 let salir = false;
 do {
     console.clear();
@@ -29,25 +29,24 @@ do {
     switch (interact) {
 
         case 1: // Crear nuevo personaje
-            //console.clear();
+            console.clear();
             console.log("\nCreando un nuevo personaje...");
             personajeActual = CrearPers(personajeActual); // reemplaza el actual
             resetearEstadisticas(personajeActual);        // reiniciar estadísticas
-            //console.clear();
+            console.clear();
             console.log("Personaje creado:", personajeActual.Nom);
             prompt("\nPresiona cualquier tecla para continuar...");
             break;
 
         case 2: // Ver estadísticas
-            //console.clear();
+            console.clear();
             verEstadisticas(personajeActual);
             prompt("\nPresiona cualquier tecla para continuar...");
             break;
 
         case 3: // Luchar
-            //console.clear();
-            const resultado = luchar(personajeActual); // genera enemigo internamente
-            actualizarEstadisticas(personajeActual, resultado);
+            console.clear();
+            luchar(personajeActual); // genera enemigo internamente
             prompt("\nPresiona cualquier tecla para continuar...");
             break;
 

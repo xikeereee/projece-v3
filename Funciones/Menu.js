@@ -28,8 +28,8 @@ function leerOpcion(maxOpciones) {
 
 
         console.log("")
-        console.log("ERROR: Escull una opció vàlida");
-        prompt("Prem ENTER per continuar...");
+        console.log("ERROR: Escoje una opción válida");
+        prompt("Presiona cualquier tecla para continuar...");
     }
 
     switch (opcion) {

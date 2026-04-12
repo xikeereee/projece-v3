@@ -8,25 +8,27 @@ class Arquer_Mitja extends Base {
         this.Vida = 50;
         this.Poder = 30;
         this.Velocitat = 20;
+
+        this.VidaMax = this.Vida;
     }
 
 
-    atack1(enemic) {
+    atack1(enemic) { // Tir precís
         enemic.modVida(-this.Poder);
     }
 
 
-    atack2(enemic) {
+    atack2(enemic) { // Tir multiple
         const cops = Math.floor(Math.random() * 3) + 1;
         const dany = this.Poder * 0.5;
 
         for (let i = 0; i < cops; i++) {
-            do {
-                enemic.modVida(-dany)
-            }
-            while (i === cops)
+            enemic.modVida(-dany);
         }
+
+        return cops;
     }
+
 }
 
 module.exports = Arquer_Mitja;

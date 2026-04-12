@@ -14,14 +14,14 @@ class Base {
     }
 
     modVida(quantitat) {
-        this.Vida += quantitat;
+        this.Vida += quantitat; // Mod vida (positiva o negativa)
 
         if (this.Vida < 0) {
-            this.Vida = 0;
+            this.Vida = 0; // Evitar que la vida baje a 0
         }
 
         if (this.Vida > this.VidaMax) {
-            this.Vida = this.VidaMax
+            this.Vida = this.VidaMax // Evita que la vida supere la vida max
         }
     }
 };
