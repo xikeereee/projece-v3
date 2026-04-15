@@ -8,6 +8,8 @@
 
 
 const prompt = require("prompt-sync")({ sigint: true });
+const { TerminalUtils } = require("../terminalUtils/TerminalUtils");
+const { escribirTextoAnimado } = require("../terminalUtils/animaciones");
 const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes/index.js");
 const { actualizarEstadisticas } = require("./editStats.js");
 
@@ -16,11 +18,8 @@ const { actualizarEstadisticas } = require("./editStats.js");
 
 
 
-/**
- * Cambia un enemigo distinto al actual (o si no existe ninguno te lo genera)
- * @param {*} personajeActual 
- * @returns 
- */
+
+
 function generarEnemic(personajeActual) {
     const personajes = [Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja];
     let enemigo;
@@ -33,22 +32,37 @@ function generarEnemic(personajeActual) {
 
 
 
+function barraVida(actual, max) {
+    const totalBloques = 20; // tamaño de la barra
+    const porcentaje = actual / max;
+    const bloquesLlenos = Math.round(porcentaje * totalBloques);
+    const bloquesVacios = totalBloques - bloquesLlenos;
+
+    const barra = "█".repeat(bloquesLlenos) + "░".repeat(bloquesVacios);
+    return `[${barra}] ${actual}/${max}`;
+}
 
 
-/**
- * Mediante tu personaje actual se lleva a cabo el combate, entra en un bucle hasta que la 
- * vida, tanto del personaje del usuario como del rival bajen de 0
- * @param {*} personajeActual 
- */
-function luchar(personajeActual) {
+
+
+async function luchar(personajeActual) {
+    console.clear();
+
     const enemic = generarEnemic(personajeActual);
 
-    console.log("Tu personaje: " + personajeActual.Nom);
-    console.log("Enemigo: " + enemic.Nom);
+    TerminalUtils.log("====================================================", "#FF0000");
+    TerminalUtils.log("              ⚔️  INICI DEL COMBAT ⚔️              ", "#FFFF00");
+    TerminalUtils.log("====================================================", "#FF0000");
+
+    await escribirTextoAnimado(`Apareix un enemic: ${enemic.Nom}!`, "#FF5555");
+    await TerminalUtils.espera(400);
+
+    TerminalUtils.log(`El teu personatge: ${personajeActual.Nom}`, "#00FFAA");
+    TerminalUtils.log(`Enemic: ${enemic.Nom}`, "#FF7777");
+    TerminalUtils.log("-----------------------------------------------", "#FF0000");
 
     let atacante, defensor;
 
-    // Definición del primer jugador
     if (personajeActual.Velocitat > enemic.Velocitat) {
         atacante = personajeActual;
         defensor = enemic;
@@ -57,90 +71,68 @@ function luchar(personajeActual) {
         defensor = personajeActual;
     }
 
-    console.log("Empieza atacando: " + atacante.Nom);
-    prompt();
+    TerminalUtils.log(`Comença atacant: ${atacante.Nom}`, "#FFFF00");
+    prompt("\nPrem ENTER per continuar...");
 
-
-
-
-
-
-
-    // Bucle de combate
     while (personajeActual.Vida > 0 && enemic.Vida > 0) {
-        console.log("\n--- TURNO DE " + atacante.Nom + " ---");
+        console.clear();
+        TerminalUtils.log(`--- TURNO DE ${atacante.Nom} ---`, "#00FFFF");
 
-
-
-
-        // Dado para poder esquivar
         let tirada = Math.floor(Math.random() * 100) + 1;
         let esquiva = tirada <= defensor.Velocitat;
 
-
-
-
-
-        // Elegir ataque
         let atac = Math.floor(Math.random() * 2) + 1;
 
         if (esquiva) {
-            console.log(defensor.Nom + " ha esquivado el ataque!");
+            TerminalUtils.log(`${defensor.Nom} ha esquivat l'atac!`, "#00FF00");
         } else {
             if (atac === 1) {
                 atacante.atack1(defensor);
-                console.log(atacante.Nom + " usa ataque 1");
+                TerminalUtils.log(`${atacante.Nom} usa ATAC 1`, "#FFAA00");
             } else {
-                const cops = atacante.atack2(defensor); // Mostrar nombre de golpes
+                const cops = atacante.atack2(defensor);
                 if (cops) {
-                    console.log(atacante.Nom + " hace el ataque 2 (" + cops + " veces)");
-
+                    TerminalUtils.log(`${atacante.Nom} fa ATAC 2 (${cops} cops)`, "#FF5500");
                 } else {
-                    console.log(atacante.Nom + " usa ataque 2");
+                    TerminalUtils.log(`${atacante.Nom} usa ATAC 2`, "#FF5500");
                 }
             }
-
         }
 
+        // Barras de vida
+        TerminalUtils.log(
+            `Vida ${personajeActual.Nom}: ${barraVida(personajeActual.Vida, personajeActual.VidaMax)}`,
+            "#00FFAA"
+        );
 
+        TerminalUtils.log(
+            `Vida ${enemic.Nom}: ${barraVida(enemic.Vida, enemic.VidaMax)}`,
+            "#FF7777"
+        );
 
-        // Mostrar vidas
-        console.log("Vida " + atacante.Nom + ": " + atacante.Vida);
-        console.log("Vida " + defensor.Nom + ": " + defensor.Vida);
+        prompt("\nPrem ENTER per continuar...");
 
-        prompt();
-
-
-
-        // Cambiar turnos
         let temp = atacante;
         atacante = defensor;
         defensor = temp;
     }
 
+    console.clear();
+    TerminalUtils.log("===== FI DEL COMBAT =====", "#FFFF00");
 
-
-
-    // Muestra de resultados
-    console.log("\n===== FIN DEL COMBATE =====");
     if (personajeActual.Vida > 0) {
-        console.log("Has ganado!");
+        TerminalUtils.log("Has guanyat!", "#00FF00");
         actualizarEstadisticas(personajeActual, "victoria");
     } else {
-        console.log("Has perdido...");
+        TerminalUtils.log("Has perdut...", "#FF0000");
         actualizarEstadisticas(personajeActual, "derrota");
     }
 
-
-
-
-
-    //Resetear vidas para volver a jugar si se quiere
     personajeActual.Vida = personajeActual.VidaMax;
     enemic.Vida = enemic.VidaMax;
-    prompt();
-}
 
+    prompt("\nPrem ENTER per continuar...");
+}
 
 
 

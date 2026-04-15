@@ -5,9 +5,8 @@
  * Script MAIN
  */
 
-
+const { TerminalUtils } = require("./terminalUtils/TerminalUtils");
 const prompt = require("prompt-sync")({ sigint: true });
-const { TerminalUtils } = require("terminalutils");
 const {
     mostrarMenuInici,
     leerOpcion,
@@ -18,94 +17,69 @@ const {
     actualizarEstadisticas,
     verEstadisticas,
     resetearEstadisticas
-} = require("funciones");
-
-
-
-
-
-
+} = require("./funciones");
 
 
 //------------------------------>> MAIN <<------------------------------\\
 
-let personajeActual = null; // personaje actual
+async function main() {
 
+    let personajeActual = null;
 
-// Selección inicial de personaje
-mostrarMenuInici();
-personajeActual = leerOpcion(4); // devuelve un objeto de clase personaje
+    // 🎬 Pantalla inicial
+    await mostrarMenuInici();
+    personajeActual = await leerOpcion(4);
 
+    let salir = false;
 
+    do {
+        console.clear();
 
+        await mostrarMenuDos(personajeActual);
 
+        let interact = await leerInteraccioDos(4);
 
+        switch (interact) {
 
+            case 1:
+                console.clear();
+                TerminalUtils.log("\nCreando un nuevo personaje...", "#00FFFF");
 
-// Bucle principal de interacción
-let salir = false;
-do {
-    console.clear();
-    mostrarMenuDos(personajeActual); // Mostrar menú de interacción
+                personajeActual = CrearPers(personajeActual);
+                resetearEstadisticas(personajeActual);
 
-    let interact = leerInteraccioDos(4); // Elegir acción (1-4)
+                console.clear();
+                TerminalUtils.log("Personaje creado: " + personajeActual.Nom, "#00FFAA");
+                prompt("\nPresiona cualquier tecla para continuar...");
+                break;
 
+            case 2:
+                console.clear();
+                TerminalUtils.log("📊 Estadísticas del personaje", "#FFFF00");
+                verEstadisticas(personajeActual);
+                prompt("\nPresiona cualquier tecla para continuar...");
+                break;
 
+            case 3:
+                console.clear();
+                TerminalUtils.log("⚔️  Iniciando combate...", "#FF4444");
+                luchar(personajeActual);
+                prompt("\nPresiona cualquier tecla para continuar...");
+                break;
 
-    switch (interact) {
+            case 4:
+                TerminalUtils.log("\nSaliendo del juego...", "#FF0000");
+                salir = true;
+                break;
 
-        case 1: // Crear nuevo personaje
-            console.clear();
-            console.log("\nCreando un nuevo personaje...");
+            default:
+                TerminalUtils.log("Opción no válida.", "#FF0000");
+                prompt("\nPresiona cualquier tecla para continuar...");
+                break;
+        }
 
-            personajeActual = CrearPers(personajeActual); // reemplaza el actual
-            resetearEstadisticas(personajeActual);        // reiniciar estadísticas
-            console.clear();
+    } while (!salir);
+}
 
-
-
-
-            console.log("Personaje creado:", personajeActual.Nom);
-            prompt("\nPresiona cualquier tecla para continuar...");
-            break;
-
-
-
-
-
-        case 2: // Ver estadísticas
-            console.clear();
-            verEstadisticas(personajeActual);
-
-            prompt("\nPresiona cualquier tecla para continuar...");
-            break;
-
-
-
-
-        case 3: // Luchar
-            console.clear();
-            luchar(personajeActual); // genera enemigo internamente
-
-            prompt("\nPresiona cualquier tecla para continuar...");
-            break;
-
-
-
-
-        case 4: // Salir
-            console.log("\nSaliendo del juego...");
-            salir = true;
-            break;
-
-
-
-
-
-        default: // Opción no válida
-            console.log("Opción no válida. Por favor, escoge de nuevo.");
-            prompt("\nPresiona cualquier tecla para continuar...");
-            break;
-    }
-
-} while (!salir);
+// ARRANCAR
+main();

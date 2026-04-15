@@ -8,37 +8,57 @@
 
 
 const prompt = require("prompt-sync")({ sigint: true });
-const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes");
-const { mostrarMenuInici, leerOpcion } = require("./Menu.js"); // ajusta según tu estructura
-
-
-
+const { TerminalUtils } = require("../terminalUtils/TerminalUtils");
+const { escribirTextoAnimado } = require("../terminalUtils/animaciones");
 
 
 
 /**
  * Exposición del menú secundario (acción del usuario respecto al juego)
- * @param {*} opcio 
+ * @param {*} personaje 
  */
-function mostrarMenuDos(opcio) {
+async function mostrarMenuDos(personaje) {
 
-    console.clear()
+    console.clear();
 
-    console.log("+--------- QUE VOLS FER ---------+ \n");
+    // Animación de entrada
+    await escribirTextoAnimado("Preparando menú...", "#00FFAA");
+    await TerminalUtils.espera(300);
+    console.clear();
 
-    console.log("1. Crear nou personatge");
-    console.log("2. Veure estadístiques");
-    console.log("3. Lluitar");
-    console.log("4. Sortir");
+
+
+
+    // Titulo
+    TerminalUtils.log("===============================================", "#00FFFF");
+    TerminalUtils.log("        ⚔️  MENÚ DE ACCIONES DEL JUGADOR ⚔️        ", "#FFFF00");
+    TerminalUtils.log("===============================================", "#00FFFF");
+
+
+
+    // Mostrar personaje actual
+    TerminalUtils.log(`Personatge actual: ${personaje.Nom}`, "#00FFAA");
+    TerminalUtils.log("-----------------------------------------------", "#00FFFF");
+
+
+
+    // Opciones del menú
+    TerminalUtils.log("1. Crear nou personatge", "#00FF00");
+    TerminalUtils.log("2. Veure estadístiques", "#00FFFF");
+    TerminalUtils.log("3. Lluitar", "#FF4444");
+    TerminalUtils.log("4. Sortir", "#FFAA00");
+
+    TerminalUtils.log("-----------------------------------------------", "#00FFFF");
+    TerminalUtils.log("Escull una opció:", "#FFFFFF");
 }
 
 
 
 
 
+
 /**
- * Se asegura de que la opción que escoja el usuario sea válida, pero también
- * avisa de si hay un error
+ * Se asegura de que la opción que escoja el usuario sea válida
  * @param {*} max 
  * @returns 
  */
@@ -50,6 +70,5 @@ function leerInteraccioDos(max) {
 
     return Interaccio;
 }
-
 
 module.exports = { mostrarMenuDos, leerInteraccioDos };

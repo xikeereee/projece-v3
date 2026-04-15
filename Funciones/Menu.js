@@ -7,22 +7,51 @@
 
 
 
-const prompt = require("prompt-sync")({ sigint: true });
 const { Paladi_Huma, Mag_Elf, Guerrer_Nan, Arquer_Mitja } = require("../personajes");
-const { TerminalUtils } = require("terminalutils");
+const prompt = require("prompt-sync")({ sigint: true });
+const { TerminalUtils } = require("../terminalUtils/TerminalUtils");
+const { escribirTextoAnimado } = require("../terminalUtils/animaciones");
 
 
 
-/**
- * Muestra los personajes a elegir
- */
-function mostrarMenuInici() {
-    console.log("+--------- Has de triar personatge ---------+ \n");
-    console.log("1. Paladí Humà");
-    console.log("2. Mag Elf");
-    console.log("3. Guerrer Nan");
-    console.log("4. Arquer Mitjà \n");
+
+
+
+async function mostrarMenuInici() {
+    console.clear();
+
+    // Título
+    TerminalUtils.log("==================================================", "#00FFFF");
+    TerminalUtils.log("        ⚔️  AUTOMATIC COMBATS by Grup4 ⚔️        ", "#FFFF00");
+    TerminalUtils.log("==================================================", "#00FFFF");
+
+    await TerminalUtils.espera(500);
+
+    // Animación escritura
+    await escribirTextoAnimado("Cargando menú...", "#00FF00");
+    await TerminalUtils.espera(500);
+
+    console.clear();
+
+
+    
+    // Arte ASCII
+    TerminalUtils.log("      /| ________________");
+    TerminalUtils.log("O|===|* >________________>");
+    TerminalUtils.log("      \\|");
+
+    TerminalUtils.log("\n+--------- Elige personaje ---------+\n", "#FFFFFF");
+
+    TerminalUtils.log("1. Paladí Humà", "#00FF00");
+    TerminalUtils.log("2. Mag Elf", "#00FFFF");
+    TerminalUtils.log("3. Guerrer Nan", "#FFAA00");
+    TerminalUtils.log("4. Arquer Mitjà", "#FF66FF");
+
+    TerminalUtils.log("");
 }
+
+
+
 
 
 
@@ -32,12 +61,12 @@ function mostrarMenuInici() {
  * @param {*} maxOpciones 
  * @returns 
  */
-function leerOpcion(maxOpciones) {
+async function leerOpcion(maxOpciones) {
     let opcion;
 
     while (true) {
         console.clear();
-        mostrarMenuInici();
+        await mostrarMenuInici();
 
         opcion = parseInt(prompt("> "));
 
@@ -47,8 +76,8 @@ function leerOpcion(maxOpciones) {
 
 
         console.log("")
-        console.log("ERROR: Escoje una opción válida");
-        prompt("Presiona cualquier tecla para continuar...");
+        TerminalUtils.log("ERROR: Escoge una opción válida", "#FF0000");
+        await TerminalUtils.espera(1000);
     }
 
     switch (opcion) {
